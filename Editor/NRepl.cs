@@ -333,6 +333,11 @@ namespace Arcadia
 				case "eval":
 					var fn = new EvalFn(message, client);
 					addCallbackVar.invoke(fn);
+
+                    Arcadia.Util.require("game.abc");
+                    var abcVar = RT.var("game.abc", "abc");
+                    Debug.Log(abcVar.invoke(5.5, 2));
+
 					break;
 				case "load-file":
 					message["code"] = new BString("(do " + message["file"].ToString() + " )");
